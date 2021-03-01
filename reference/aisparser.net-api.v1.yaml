@@ -1,0 +1,364 @@
+openapi: 3.0.0
+info:
+  title: AisParser.net API
+  version: '1.0'
+  contact:
+    name: Chris Richards
+    url: 'https://yellowfeather.com'
+    email: chris@yellowfeather.com
+  license:
+    name: MIT
+    url: 'https://github.com/yellowfeather/AisParser.net/blob/main/LICENSE'
+  description: 'AisParser API to decode AIS messages. '
+servers:
+  - url: 'https://aisparser.net/api'
+    description: Chris Richards
+paths:
+  /parse:
+    post:
+      summary: Parse encoded AIS message
+      operationId: post-parse
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/PositionReportClassA'
+                  - $ref: '#/components/schemas/PositionReportClassAAssignedSchedule'
+                  - $ref: '#/components/schemas/PositionReportClassAResponseToInterrogation'
+                  - $ref: '#/components/schemas/StandardClassBCsPositionReport'
+                  - $ref: '#/components/schemas/ExtendedClassBCsPositionReport'
+              examples: {}
+        '400':
+          description: Missing Required Information
+        '401':
+          description: Unauthorized
+        '409':
+          description: Email Already Taken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ''
+            examples:
+              Parse Position Report Class A:
+                value:
+                  aisMessage: '!AIVDM,1,1,,B,13GmFd002pwrel@LpMu8L6qn8Vp0,0*56'
+        description: Post the AIS message to be parsed.
+      description: Parses an encoded AIS message.
+    parameters: []
+components:
+  schemas:
+    PositionReportClassA:
+      description: |-
+        Scheduled position report (Class A shipborne mobile equipment).
+        Message type: 1
+      title: PositionReportClassA
+      type: object
+      properties:
+        messageType:
+          type: number
+        repeat:
+          type: number
+        mmsi:
+          type: number
+        navigationStatus:
+          type: number
+        rateOfTurn:
+          type: number
+        speedOverGround:
+          type: number
+        positionAccuracy:
+          type: number
+        longitude:
+          type: number
+        latitude:
+          type: number
+        courseOverGround:
+          type: number
+        trueHeading:
+          type: number
+        timestamp:
+          type: number
+        maneuverIndicator:
+          type: number
+        spare:
+          type: number
+        raim:
+          type: number
+        radioStatus:
+          type: number
+      required:
+        - messageType
+        - repeat
+        - mmsi
+        - navigationStatus
+        - rateOfTurn
+        - speedOverGround
+        - positionAccuracy
+        - longitude
+        - latitude
+        - courseOverGround
+        - trueHeading
+        - timestamp
+        - maneuverIndicator
+        - spare
+        - raim
+        - radioStatus
+    PositionReportClassAAssignedSchedule:
+      description: |-
+        Assigned scheduled position report; (Class A shipborne mobile equipment).
+        Message type: 2
+      type: object
+      properties:
+        messageType:
+          type: number
+        repeat:
+          type: number
+        mmsi:
+          type: number
+        navigationStatus:
+          type: number
+        rateOfTurn:
+          type: number
+        speedOverGround:
+          type: number
+        positionAccuracy:
+          type: number
+        longitude:
+          type: number
+        latitude:
+          type: number
+        courseOverGround:
+          type: number
+        trueHeading:
+          type: number
+        timestamp:
+          type: number
+        maneuverIndicator:
+          type: number
+        spare:
+          type: number
+        raim:
+          type: number
+        radioStatus:
+          type: number
+      required:
+        - messageType
+        - repeat
+        - mmsi
+        - navigationStatus
+        - rateOfTurn
+        - speedOverGround
+        - positionAccuracy
+        - longitude
+        - latitude
+        - courseOverGround
+        - trueHeading
+        - timestamp
+        - maneuverIndicator
+        - spare
+        - raim
+        - radioStatus
+    PositionReportClassAResponseToInterrogation:
+      description: |-
+        Special position report, response to interrogation; (Class A shipborne mobile equipment).
+        Message type: 3
+      type: object
+      properties:
+        messageType:
+          type: number
+        repeat:
+          type: number
+        mmsi:
+          type: number
+        navigationStatus:
+          type: number
+        rateOfTurn:
+          type: number
+        speedOverGround:
+          type: number
+        positionAccuracy:
+          type: number
+        longitude:
+          type: number
+        latitude:
+          type: number
+        courseOverGround:
+          type: number
+        trueHeading:
+          type: number
+        timestamp:
+          type: number
+        maneuverIndicator:
+          type: number
+        spare:
+          type: number
+        raim:
+          type: number
+        radioStatus:
+          type: number
+      required:
+        - messageType
+        - repeat
+        - mmsi
+        - navigationStatus
+        - rateOfTurn
+        - speedOverGround
+        - positionAccuracy
+        - longitude
+        - latitude
+        - courseOverGround
+        - trueHeading
+        - timestamp
+        - maneuverIndicator
+        - spare
+        - raim
+        - radioStatus
+    StandardClassBCsPositionReport:
+      description: |-
+        Standard position report for Class B shipborne mobile equipment to be used instead of Messages 1, 2, 3.
+        Message type: 18
+      type: object
+      properties:
+        messageType:
+          type: number
+        repeat:
+          type: number
+        mmsi:
+          type: number
+        reserved:
+          type: number
+        speedOverGround:
+          type: number
+        positionAccuracy:
+          type: number
+        longitude:
+          type: number
+        latitude:
+          type: number
+        courseOverGround:
+          type: number
+        trueHeading:
+          type: number
+        timestamp:
+          type: number
+        regionalReserved:
+          type: number
+        isCsUnit:
+          type: boolean
+        hasDisplay:
+          type: boolean
+        hasDscCapability:
+          type: boolean
+        band:
+          type: boolean
+        canAcceptMessage22:
+          type: boolean
+        assigned:
+          type: boolean
+        raim:
+          type: number
+        radioStatus:
+          type: number
+      required:
+        - messageType
+        - repeat
+        - mmsi
+        - reserved
+        - speedOverGround
+        - positionAccuracy
+        - longitude
+        - latitude
+        - courseOverGround
+        - trueHeading
+        - timestamp
+        - regionalReserved
+        - isCsUnit
+        - hasDisplay
+        - hasDscCapability
+        - band
+        - canAcceptMessage22
+        - assigned
+        - raim
+        - radioStatus
+    ExtendedClassBCsPositionReport:
+      description: |-
+        Extended position report for class B shipborne mobile equipment; contains additional static information.
+        Message type: 19
+      type: object
+      properties:
+        messageType:
+          type: number
+        repeat:
+          type: number
+        mmsi:
+          type: number
+        reserved:
+          type: number
+        speedOverGround:
+          type: number
+        positionAccuracy:
+          type: number
+        longitude:
+          type: number
+        latitude:
+          type: number
+        courseOverGround:
+          type: number
+        trueHeading:
+          type: number
+        timestamp:
+          type: number
+        regionalReserved:
+          type: number
+        name:
+          type: string
+          minLength: 1
+        shipType:
+          type: number
+        dimensionToBow:
+          type: number
+        dimensionToStern:
+          type: number
+        dimensionToPort:
+          type: number
+        dimensionToStarboard:
+          type: number
+        positionFixType:
+          type: number
+        raim:
+          type: number
+        dataTerminalReady:
+          type: boolean
+        assigned:
+          type: boolean
+        spare:
+          type: number
+      required:
+        - messageType
+        - repeat
+        - mmsi
+        - reserved
+        - speedOverGround
+        - positionAccuracy
+        - longitude
+        - latitude
+        - courseOverGround
+        - trueHeading
+        - timestamp
+        - regionalReserved
+        - name
+        - shipType
+        - dimensionToBow
+        - dimensionToStern
+        - dimensionToPort
+        - dimensionToStarboard
+        - positionFixType
+        - raim
+        - dataTerminalReady
+        - assigned
+        - spare
+  responses: {}
