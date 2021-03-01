@@ -35,8 +35,6 @@ paths:
           description: Missing Required Information
         '401':
           description: Unauthorized
-        '409':
-          description: Email Already Taken
       requestBody:
         content:
           application/json:
