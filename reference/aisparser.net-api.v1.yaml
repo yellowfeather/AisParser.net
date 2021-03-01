@@ -33,8 +33,75 @@ paths:
               examples: {}
         '400':
           description: Missing Required Information
-        '401':
-          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  type:
+                    type: string
+                    minLength: 1
+                  title:
+                    type: string
+                    minLength: 1
+                  status:
+                    type: number
+                  detail:
+                    type: string
+                    minLength: 1
+                  instance:
+                    type: string
+                    minLength: 1
+                required:
+                  - type
+                  - title
+                  - status
+                  - detail
+                  - instance
+              examples:
+                example:
+                  value:
+                    type: 'https://httpstatuses.com/422'
+                    title: An error occurred parsing the specified aisMessage.
+                    status: 422
+                    detail: 'Invalid sentence: checksum failure. Checksum: 86, calculated: 20'
+                    instance: /api/parse
+        '422':
+          description: An error ocurred parsing the AIS message.
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  type:
+                    type: string
+                    minLength: 1
+                  title:
+                    type: string
+                    minLength: 1
+                  status:
+                    type: number
+                  detail:
+                    type: string
+                    minLength: 1
+                  instance:
+                    type: string
+                    minLength: 1
+                required:
+                  - type
+                  - title
+                  - detail
+                  - instance
+              examples:
+                example:
+                  value:
+                    type: 'https://httpstatuses.com/422'
+                    title: An error occurred parsing the specified aisMessage.
+                    status: 422
+                    detail: 'Invalid sentence: checksum failure. Checksum: 86, calculated: 20'
+                    instance: /api/parse
       requestBody:
         content:
           application/json:
