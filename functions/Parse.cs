@@ -27,6 +27,7 @@ namespace AisParser.net
                 var problemDetails = new ProblemDetails
                 {
                     Status = StatusCodes.Status400BadRequest,
+                    Type = "https://httpstatuses.com/400",
                     Title = "aisMessage not specified.",
                     Detail = "Specify the aisMessage to be decoded in the request body.",
                     Instance = req.Path
@@ -43,6 +44,7 @@ namespace AisParser.net
                 var problemDetails = new ProblemDetails
                 {
                     Status = StatusCodes.Status422UnprocessableEntity,
+                    Type = "https://httpstatuses.com/422",
                     Title = "An error occurred parsing the specified aisMessage.",
                     Detail = ex.Message,
                     Instance = req.Path
