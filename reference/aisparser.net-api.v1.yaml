@@ -41,7 +41,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: ''
+              description: ''
+              type: object
+              properties:
+                aisMessage:
+                  type: string
+                  minLength: 1
+              required:
+                - aisMessage
             examples:
               Parse Position Report Class A:
                 value:
