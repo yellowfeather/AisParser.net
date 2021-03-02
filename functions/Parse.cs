@@ -14,7 +14,7 @@ namespace AisParser.net
     {
         [FunctionName("parse")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.System, "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
             string aisMessage = req.Query["aisMessage"];
