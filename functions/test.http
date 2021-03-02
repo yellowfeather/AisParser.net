@@ -1,4 +1,13 @@
-POST https://aisparser-net-api.azure-api.net/parse HTTP/1.1
+POST http://localhost:7071/api/parse HTTP/1.1
+content-type: application/json
+
+{
+    "aisMessage": "!AIVDM,1,1,,B,13GmFd002pwrel@LpMu8L6qn8Vp0,0*56"
+}
+
+###
+
+POST https://aisparser.azure-api.net/parse HTTP/1.1
 content-type: application/json
 
 {
