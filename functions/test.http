@@ -6,6 +6,17 @@ content-type: application/json
 }
 
 ###
+# Make a request to the function URL directly. Will fail as unauthorised.
+
+POST https://aisparser.azurewebsites.net/api/parse HTTP/1.1
+content-type: application/json
+
+{
+    "aisMessage": "!AIVDM,1,1,,B,13GmFd002pwrel@LpMu8L6qn8Vp0,0*56"
+}
+
+###
+# Make a request to the API Management URL.
 
 POST https://aisparser.azure-api.net/parse HTTP/1.1
 content-type: application/json
