@@ -20,8 +20,8 @@
           </div>
         </div>
         <div class="hidden md:flex md:space-x-10">
-          <a href="/" class="font-medium text-gray-500 hover:text-gray-900">Home</a>
-          <a href="/about" class="font-medium text-gray-500 hover:text-gray-900">About</a>
+          <router-link to="/" class="font-medium text-gray-500 hover:text-gray-900">Home</router-link>
+          <router-link to="/about" class="font-medium text-gray-500 hover:text-gray-900">About</router-link>
         </div>
       </nav>
     </div>
@@ -55,8 +55,6 @@
         <div class="px-2 pt-2 pb-3">
           <router-link to="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Home</router-link>
           <router-link to="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">About</router-link>
-          <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Home</a>
-          <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">About</a>
         </div>
       </div>
     </div>
