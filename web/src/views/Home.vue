@@ -50,8 +50,8 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios'
 import { ref, defineComponent } from 'vue'
+import ParseService from '../services/ParseService'
 
 export default defineComponent({
   name: 'Home',
@@ -60,16 +60,13 @@ export default defineComponent({
     const message = ref()
 
     function onParse() {
-      let body = {
-          "aisMessage": input.value
-      }
-      axios.post(`/api/parse`, body)
-      .then(res => {
-        message.value = res.data
-      })
-      .catch(error => {
-        console.log("Error: ", error)
-      })
+      ParseService.parse(input.value)
+        .then(res => {
+          message.value = res.data
+        })
+        .catch(error => {
+          console.log("Error: ", error)
+        })
     }
 
     return { input, message, onParse }
