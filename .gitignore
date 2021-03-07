@@ -263,9 +263,9 @@ paket-files/
 __pycache__/
 *.pyc
 
+# vite / vue
 node_modules
 .DS_Store
 dist
 dist-ssr
 *.local
-
