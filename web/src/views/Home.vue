@@ -9,7 +9,7 @@
           AISParser.net allows you to parse (or decode) AIS messages.
         </p>
       </div>
-      <form @submit.prevent="onParse">
+      <form @submit.prevent="onSubmit">
         <div class="mt-5 max-w-2xl mx-auto md:mt-8">
           <div class="sm:flex sm:justify-center ">
             <input type="text"
@@ -24,7 +24,10 @@
         </div>
       </form>
     </div>
-    <div class="mt-12 max-w-2xl mx-auto text-base bg-white shadow overflow-hidden sm:rounded-lg" v-if="message != null">
+    <div v-if="error" class="error">
+      {{ error }}
+    </div>
+    <div class="mt-12 max-w-2xl mx-auto text-base bg-white shadow overflow-hidden sm:rounded-lg" v-if="message">
       <!-- <div class="px-4 py-5 sm:px-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           Applicant Information
@@ -50,26 +53,50 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { defineComponent, ref, toRefs, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import ParseService from '../services/ParseService'
 
 export default defineComponent({
   name: 'Home',
-  setup: () => {
-    const input = ref("")
+  props: {
+    q: {
+      type: String,
+      required: false
+    }
+  },
+  setup: (props) => {
+    const error = ref()
     const message = ref()
+    const input = ref()
+    const { q } = toRefs(props)
 
-    function onParse() {
-      ParseService.parse(input.value)
+    const router = useRouter()
+
+    function onSubmit() {
+      router.push({
+        name: 'Home',
+        params: { q: input.value } 
+      })
+    }
+
+    function parse() {
+      if (!q || q.value == "") return
+
+      ParseService.parse(q.value)
         .then(res => {
           message.value = res.data
+          error.value = null
         })
-        .catch(error => {
-          console.log("Error: ", error)
+        .catch(err => {
+          message.value = null
+          error.value = err.toString()
         })
     }
 
-    return { input, message, onParse }
+    watch(q, parse)
+
+    return { input, error, message, onSubmit }
   }
 })
 </script>
