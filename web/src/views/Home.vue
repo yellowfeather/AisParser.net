@@ -16,11 +16,11 @@
                   v-model="input"
                   class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Enter AIS message">
             <button type="submit"
-                    class="inline-flex items-center justify-center mx-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
+                    class="inline-flex items-center justify-center mx-2 px-4 py-2 mt-2 sm:mt-0 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
                 Parse
             </button>
           </div>
-          <p class="mt-2 text-sm text-gray-500 text-left">e.g. !AIVDM,1,1,,B,13GmFd002pwrel@LpMu8L6qn8Vp0,0*56</p>
+          <p class="mt-2 text-sm text-gray-500 text-left truncate">e.g. !AIVDM,1,1,,B,13GmFd002pwrel@LpMu8L6qn8Vp0,0*56</p>
         </div>
       </form>
     </div>
