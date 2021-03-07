@@ -58,8 +58,6 @@ export default defineComponent({
     }
   },
   setup: () => {
-    const baseUrl = "https://aisparser.azure-api.net";
-
     const input = ref("")
     const message = ref()
 
@@ -67,7 +65,7 @@ export default defineComponent({
       let body = {
           "aisMessage": input.value
       }
-      axios.post(`${baseUrl}/parse`, body)
+      axios.post(`/api/parse`, body)
       .then(res => {
         message.value = res.data
       })
