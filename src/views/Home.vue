@@ -94,7 +94,7 @@ export default defineComponent({
         })
     }
 
-    parse()
+    watch(q, parse, { immediate: true })
 
     return { input, error, message, onSubmit }
   }
