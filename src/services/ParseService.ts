@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-    baseURL: 'https://www.aisparser.net/api',
+    baseURL: 'http://localhost:7071/api', // 'https://www.aisparser.net/api',
     withCredentials: false,
     headers: {
         Accept: 'application/json', 'Content-Type': 'application/json'
