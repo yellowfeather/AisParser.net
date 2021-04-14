@@ -56,6 +56,7 @@
 import { defineComponent, ref, toRefs, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import ParseService from '../services/ParseService'
+import { AisMessage } from "../models/AisMessage"
 
 export default defineComponent({
   name: 'Home',
@@ -67,7 +68,7 @@ export default defineComponent({
   },
   setup: (props) => {
     const error = ref()
-    const message = ref()
+    const message = ref<AisMessage | null>()
     const input = ref()
     const { q } = toRefs(props)
 
@@ -85,7 +86,8 @@ export default defineComponent({
 
       ParseService.parse(q.value)
         .then(res => {
-          message.value = res.data
+          const aisMessage = res.data as AisMessage
+          message.value = aisMessage
           error.value = null
         })
         .catch(err => {
