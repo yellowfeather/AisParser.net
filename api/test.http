@@ -1,4 +1,4 @@
-POST https://aisparser-net-api.azure-api.net/parse HTTP/1.1
+POST https://www.aisparser.net/api/parse HTTP/1.1
 content-type: application/json
 
 {
