@@ -123,314 +123,273 @@ paths:
     parameters: []
 components:
   schemas:
+    AisMessage:
+      title: AisMessage
+      description: |-
+        Common properties for all AIS messages
+      type: object
+      properties:
+        messageType:
+          type: number
+        repeat:
+          type: number
+        mmsi:
+          type: number
+      required:
+        - messageType
+        - repeat
+        - mmsi
+
+    AisMessageWithLocation:
+      title: AisMessageWithLocation
+      description: |-
+        Common properties for all AIS messages that contain location information
+      allOf:
+        - $ref: '#/components/schemas/AisMessage'
+        - type: object
+          properties:
+            positionAccuracy:
+              type: number
+            longitude:
+              type: number
+            latitude:
+              type: number
+          required:
+            - positionAccuracy
+            - longitude
+            - latitude
+
     PositionReportClassA:
+      title: PositionReportClassA
       description: |-
         Scheduled position report (Class A shipborne mobile equipment).
         Message type: 1
-      title: PositionReportClassA
-      type: object
-      properties:
-        messageType:
-          type: number
-        repeat:
-          type: number
-        mmsi:
-          type: number
-        navigationStatus:
-          type: number
-        rateOfTurn:
-          type: number
-        speedOverGround:
-          type: number
-        positionAccuracy:
-          type: number
-        longitude:
-          type: number
-        latitude:
-          type: number
-        courseOverGround:
-          type: number
-        trueHeading:
-          type: number
-        timestamp:
-          type: number
-        maneuverIndicator:
-          type: number
-        spare:
-          type: number
-        raim:
-          type: number
-        radioStatus:
-          type: number
-      required:
-        - messageType
-        - repeat
-        - mmsi
-        - navigationStatus
-        - rateOfTurn
-        - speedOverGround
-        - positionAccuracy
-        - longitude
-        - latitude
-        - courseOverGround
-        - trueHeading
-        - timestamp
-        - maneuverIndicator
-        - spare
-        - raim
-        - radioStatus
+      allOf:
+        - $ref: '#/components/schemas/AisMessageWithLocation'
+        - type: object
+          properties:
+            navigationStatus:
+              type: number
+            rateOfTurn:
+              type: number
+            speedOverGround:
+              type: number
+            courseOverGround:
+              type: number
+            trueHeading:
+              type: number
+            timestamp:
+              type: number
+            maneuverIndicator:
+              type: number
+            spare:
+              type: number
+            raim:
+              type: number
+            radioStatus:
+              type: number
+          required:
+          - navigationStatus
+          - rateOfTurn
+          - speedOverGround
+          - courseOverGround
+          - trueHeading
+          - timestamp
+          - maneuverIndicator
+          - spare
+          - raim
+          - radioStatus
     PositionReportClassAAssignedSchedule:
+      title: PositionReportClassAAssignedSchedule
       description: |-
         Assigned scheduled position report; (Class A shipborne mobile equipment).
         Message type: 2
-      type: object
-      properties:
-        messageType:
-          type: number
-        repeat:
-          type: number
-        mmsi:
-          type: number
-        navigationStatus:
-          type: number
-        rateOfTurn:
-          type: number
-        speedOverGround:
-          type: number
-        positionAccuracy:
-          type: number
-        longitude:
-          type: number
-        latitude:
-          type: number
-        courseOverGround:
-          type: number
-        trueHeading:
-          type: number
-        timestamp:
-          type: number
-        maneuverIndicator:
-          type: number
-        spare:
-          type: number
-        raim:
-          type: number
-        radioStatus:
-          type: number
-      required:
-        - messageType
-        - repeat
-        - mmsi
-        - navigationStatus
-        - rateOfTurn
-        - speedOverGround
-        - positionAccuracy
-        - longitude
-        - latitude
-        - courseOverGround
-        - trueHeading
-        - timestamp
-        - maneuverIndicator
-        - spare
-        - raim
-        - radioStatus
+      allOf:
+        - $ref: '#/components/schemas/AisMessageWithLocation'
+        - type: object
+          properties:
+            navigationStatus:
+              type: number
+            rateOfTurn:
+              type: number
+            speedOverGround:
+              type: number
+            courseOverGround:
+              type: number
+            trueHeading:
+              type: number
+            timestamp:
+              type: number
+            maneuverIndicator:
+              type: number
+            spare:
+              type: number
+            raim:
+              type: number
+            radioStatus:
+              type: number
+          required:
+            - navigationStatus
+            - rateOfTurn
+            - speedOverGround
+            - courseOverGround
+            - trueHeading
+            - timestamp
+            - maneuverIndicator
+            - spare
+            - raim
+            - radioStatus
     PositionReportClassAResponseToInterrogation:
+      title: PositionReportClassAResponseToInterrogation
       description: |-
         Special position report, response to interrogation; (Class A shipborne mobile equipment).
         Message type: 3
-      type: object
-      properties:
-        messageType:
-          type: number
-        repeat:
-          type: number
-        mmsi:
-          type: number
-        navigationStatus:
-          type: number
-        rateOfTurn:
-          type: number
-        speedOverGround:
-          type: number
-        positionAccuracy:
-          type: number
-        longitude:
-          type: number
-        latitude:
-          type: number
-        courseOverGround:
-          type: number
-        trueHeading:
-          type: number
-        timestamp:
-          type: number
-        maneuverIndicator:
-          type: number
-        spare:
-          type: number
-        raim:
-          type: number
-        radioStatus:
-          type: number
-      required:
-        - messageType
-        - repeat
-        - mmsi
-        - navigationStatus
-        - rateOfTurn
-        - speedOverGround
-        - positionAccuracy
-        - longitude
-        - latitude
-        - courseOverGround
-        - trueHeading
-        - timestamp
-        - maneuverIndicator
-        - spare
-        - raim
-        - radioStatus
+      allOf:
+        - $ref: '#/components/schemas/AisMessageWithLocation'
+        - type: object
+          properties:
+            navigationStatus:
+              type: number
+            rateOfTurn:
+              type: number
+            speedOverGround:
+              type: number
+            courseOverGround:
+              type: number
+            trueHeading:
+              type: number
+            timestamp:
+              type: number
+            maneuverIndicator:
+              type: number
+            spare:
+              type: number
+            raim:
+              type: number
+            radioStatus:
+              type: number
+          required:
+            - navigationStatus
+            - rateOfTurn
+            - speedOverGround
+            - courseOverGround
+            - trueHeading
+            - timestamp
+            - maneuverIndicator
+            - spare
+            - raim
+            - radioStatus
     StandardClassBCsPositionReport:
+      title: StandardClassBCsPositionReport
       description: |-
         Standard position report for Class B shipborne mobile equipment to be used instead of Messages 1, 2, 3.
         Message type: 18
-      type: object
-      properties:
-        messageType:
-          type: number
-        repeat:
-          type: number
-        mmsi:
-          type: number
-        reserved:
-          type: number
-        speedOverGround:
-          type: number
-        positionAccuracy:
-          type: number
-        longitude:
-          type: number
-        latitude:
-          type: number
-        courseOverGround:
-          type: number
-        trueHeading:
-          type: number
-        timestamp:
-          type: number
-        regionalReserved:
-          type: number
-        isCsUnit:
-          type: boolean
-        hasDisplay:
-          type: boolean
-        hasDscCapability:
-          type: boolean
-        band:
-          type: boolean
-        canAcceptMessage22:
-          type: boolean
-        assigned:
-          type: boolean
-        raim:
-          type: number
-        radioStatus:
-          type: number
-      required:
-        - messageType
-        - repeat
-        - mmsi
-        - reserved
-        - speedOverGround
-        - positionAccuracy
-        - longitude
-        - latitude
-        - courseOverGround
-        - trueHeading
-        - timestamp
-        - regionalReserved
-        - isCsUnit
-        - hasDisplay
-        - hasDscCapability
-        - band
-        - canAcceptMessage22
-        - assigned
-        - raim
-        - radioStatus
+      allOf:
+        - $ref: '#/components/schemas/AisMessageWithLocation'
+        - type: object
+          properties:
+            reserved:
+              type: number
+            speedOverGround:
+              type: number
+            courseOverGround:
+              type: number
+            trueHeading:
+              type: number
+            timestamp:
+              type: number
+            regionalReserved:
+              type: number
+            isCsUnit:
+              type: boolean
+            hasDisplay:
+              type: boolean
+            hasDscCapability:
+              type: boolean
+            band:
+              type: boolean
+            canAcceptMessage22:
+              type: boolean
+            assigned:
+              type: boolean
+            raim:
+              type: number
+            radioStatus:
+              type: number
+          required:
+            - reserved
+            - speedOverGround
+            - courseOverGround
+            - trueHeading
+            - timestamp
+            - regionalReserved
+            - isCsUnit
+            - hasDisplay
+            - hasDscCapability
+            - band
+            - canAcceptMessage22
+            - assigned
+            - raim
+            - radioStatus
     ExtendedClassBCsPositionReport:
+      title: ExtendedClassBCsPositionReport
       description: |-
         Extended position report for class B shipborne mobile equipment; contains additional static information.
         Message type: 19
-      type: object
-      properties:
-        messageType:
-          type: number
-        repeat:
-          type: number
-        mmsi:
-          type: number
-        reserved:
-          type: number
-        speedOverGround:
-          type: number
-        positionAccuracy:
-          type: number
-        longitude:
-          type: number
-        latitude:
-          type: number
-        courseOverGround:
-          type: number
-        trueHeading:
-          type: number
-        timestamp:
-          type: number
-        regionalReserved:
-          type: number
-        name:
-          type: string
-          minLength: 1
-        shipType:
-          type: number
-        dimensionToBow:
-          type: number
-        dimensionToStern:
-          type: number
-        dimensionToPort:
-          type: number
-        dimensionToStarboard:
-          type: number
-        positionFixType:
-          type: number
-        raim:
-          type: number
-        dataTerminalReady:
-          type: boolean
-        assigned:
-          type: boolean
-        spare:
-          type: number
-      required:
-        - messageType
-        - repeat
-        - mmsi
-        - reserved
-        - speedOverGround
-        - positionAccuracy
-        - longitude
-        - latitude
-        - courseOverGround
-        - trueHeading
-        - timestamp
-        - regionalReserved
-        - name
-        - shipType
-        - dimensionToBow
-        - dimensionToStern
-        - dimensionToPort
-        - dimensionToStarboard
-        - positionFixType
-        - raim
-        - dataTerminalReady
-        - assigned
-        - spare
-  responses: {}
+      allOf:
+        - $ref: '#/components/schemas/AisMessageWithLocation'
+        - type: object
+          properties:
+            reserved:
+              type: number
+            speedOverGround:
+              type: number
+            courseOverGround:
+              type: number
+            trueHeading:
+              type: number
+            timestamp:
+              type: number
+            regionalReserved:
+              type: number
+            name:
+              type: string
+              minLength: 1
+            shipType:
+              type: number
+            dimensionToBow:
+              type: number
+            dimensionToStern:
+              type: number
+            dimensionToPort:
+              type: number
+            dimensionToStarboard:
+              type: number
+            positionFixType:
+              type: number
+            raim:
+              type: number
+            dataTerminalReady:
+              type: boolean
+            assigned:
+              type: boolean
+            spare:
+              type: number
+          required:
+            - reserved
+            - speedOverGround
+            - courseOverGround
+            - trueHeading
+            - timestamp
+            - regionalReserved
+            - name
+            - shipType
+            - dimensionToBow
+            - dimensionToStern
+            - dimensionToPort
+            - dimensionToStarboard
+            - positionFixType
+            - raim
+            - dataTerminalReady
+            - assigned
+            - spare
